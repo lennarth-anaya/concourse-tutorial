@@ -5,21 +5,21 @@ set -x # print commands
 
 git clone resource-gist updated-gist
 
-echo "1-------------"
-
+echo "1 --- listing contents of original repository cloned automatically "
 cd resource-gist
-echo "2-------------"
-
-cd updated-gist
-echo $(date) > bumpme
-
 ls -l
 
-echo "resource-gist:"
-ls -l resource-gist
+echo "2 --- editing repo that was manually cloned above"
 
-echo "updated-gist:"
-ls -l updated-gist
+cd ../updated-gist
+ls -l
+echo $(date) > bumpme
+
+echo "3 --- content of original file in folder cloned automatically"
+cat ../resource-gist/bumpme
+
+echo "4 --- content of edited file in new folder cloned manually"
+cat bumpme
 
 git config --global user.email "nobody@concourse-ci.org"
 git config --global user.name "Concourse"
